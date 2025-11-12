@@ -10,3 +10,6 @@
 
 # VIM swap files
 *.swp
+
+#output folder
+output_landscape

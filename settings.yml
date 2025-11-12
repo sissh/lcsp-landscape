@@ -1,0 +1,52 @@
+# Landscape2 settings
+#
+# This settings file allows customizing some aspects of the landscape.
+#
+# Reference documentation: https://github.com/cncf/landscape2/blob/main/docs/config/settings.yml
+
+foundation: LCSP
+
+url: http://127.0.0.1:8000
+
+colors:
+  color1: "rgba(0, 107, 204, 1)"
+  color2: "rgba(255, 0, 170, 1)"
+  color3: "rgba(96, 149, 214, 1)"
+  color4: "rgba(0, 42, 81, 0.7)"
+  color5: "rgba(1, 107, 204, 0.7)"
+  color6: "rgba(0, 42, 81, 0.7)"
+  color7: "rgba(180, 219, 255, 1)"
+
+description: Landscape pour le Laboratoire de Cybersécurité de Supinfo Paris
+
+featured_items:
+  - field: maturity
+    options:
+      - value: interne
+        order: 1
+        label: Interne
+      - value: externe
+        order: 2
+        label: Externe
+
+footer:
+  links:
+    gitlab: "http://10.201.24.220"
+    linkedin: "https://www.linkedin.com/company/laboratoire-cybersecurite-supinfo-paris"
+  logo: "hosted_logos/lcsp.svg"
+
+grid_items_size: large
+
+groups:
+  - name: LCSP
+    categories:
+      - Infrastructure
+      - Collaboration et Communication
+      - Ressources d'apprentissage
+
+header:
+  links:
+    gitlab: "http://10.201.24.220"
+  logo: "hosted_logos/lcsp.svg"
+
+screenshot_width: 1500
