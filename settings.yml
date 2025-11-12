@@ -20,7 +20,7 @@ colors:
 description: Landscape pour le Laboratoire de Cybersécurité de Supinfo Paris
 
 images:
-  favicon: hosted_logos/favicon.ico
+  favicon: "https://raw.githubusercontent.com/sissh/lcsp-landscape/refs/heads/master/hosted_logos/favicon.ico"
 
 featured_items:
   - field: maturity
