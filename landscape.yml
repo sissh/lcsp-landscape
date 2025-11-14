@@ -63,7 +63,7 @@ landscape:
           project: externe
           logo: tryhackme.svg
           homepage_url: https://tryhackme.com/
-          description: "Plateforme d'apprentissage en cybersécurité. Contient des cours interactifs. Shaboing"
+          description: "Plateforme d'apprentissage en cybersécurité. Contient des cours interactifs."
     - subcategory:
       name: Challenges
       items:
