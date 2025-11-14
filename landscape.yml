@@ -64,6 +64,12 @@ landscape:
           logo: tryhackme.svg
           homepage_url: https://tryhackme.com/
           description: "Plateforme d'apprentissage en cybersécurité. Contient des cours interactifs."
+        - item:
+          name: ANSSI
+          project: externe
+          logo: anssi.svg
+          homepage_url: https://cyber.gouv.fr/publications
+          description: "Publications de l'ANSSI, l'Agence Nationale de la Sécurité des Systèmes d'Information."
     - subcategory:
       name: Challenges
       items:
