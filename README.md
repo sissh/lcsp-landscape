@@ -9,3 +9,5 @@ Pour déployer la page :
 `landscape2 build --data-file landscape.yml --settings-file settings.yml --output-dir <DOSSIER_CIBLE> --logos-path hosted_logos/`
 
 `landscape2 serve --landscape-dir <DOSSIER_CIBLE>`
+
+triple monstre
