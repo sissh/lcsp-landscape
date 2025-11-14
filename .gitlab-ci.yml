@@ -6,5 +6,5 @@ build-job:
 deploy-prod:
   stage: deploy
   script:
-    - mv -f /home/$USER/output_landscape/* /var/www/html
+    - cp -afr /home/$USER/output_landscape/* /var/www/html
   environment: production
