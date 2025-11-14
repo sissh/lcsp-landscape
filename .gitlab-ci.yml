@@ -6,5 +6,5 @@ build-job:
 deploy-prod:
   stage: deploy
   script:
-    - mv /home/$USER/output_dir/* /var/www/html
+    - mv /home/$USER/output_landscape/* /var/www/html
   environment: production
