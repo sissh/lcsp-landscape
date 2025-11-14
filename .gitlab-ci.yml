@@ -1,0 +1,10 @@
+stages:
+  - deploy
+
+master-deploy:
+  stage: deploy
+  script:
+    - landscape2 build --data-file landscape.yml --settings-file settings.yml --output-dir output_landscape --logos-path>
+    - cp -R output_landscape/* /var/www/html
+  only:
+    - master
