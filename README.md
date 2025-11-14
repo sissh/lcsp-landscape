@@ -10,4 +10,4 @@ Pour déployer la page :
 
 `landscape2 serve --landscape-dir <DOSSIER_CIBLE>`
 
-triple monstre
+
