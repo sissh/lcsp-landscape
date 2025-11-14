@@ -1,10 +1,10 @@
 build-job:
   stage: build
   script:
-    - landscape2 build --data-file $CI_PROJECT_DIR/landscape.yml --settings-file $CI_PROJECT_DIR/settings.yml --logos-path $CI_PROJECT_DIR/hosted_logos --output-dir $CI_PROJECT_DIR/output_landscape
+    - landscape2 build --data-file $CI_PROJECT_DIR/landscape.yml --settings-file $CI_PROJECT_DIR/settings.yml --logos-path $CI_PROJECT_DIR/hosted_logos --output-dir /home/$USER/output_landscape
 
 deploy-prod:
   stage: deploy
   script:
-    - mv $CI_PROJECT_DIR/output_dir/* /var/www/html
+    - mv /home/$USER/output_dir/* /var/www/html
   environment: production
