@@ -6,5 +6,5 @@ build-job:
 deploy-prod:
   stage: deploy
   script:
-    - mv -R $CI_PROJECT_DIR/output_dir/* /var/www/html
+    - mv $CI_PROJECT_DIR/output_dir/* /var/www/html
   environment: production
