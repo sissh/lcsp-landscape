@@ -17,9 +17,12 @@ landscape:
           logo: dsm.svg
           homepage_url: https://10.201.24.15:5001
           description: "Interface de gestion du NAS"
+    - subcatogory:
+      name: Documentation
+      items:
         - item:
           name: Wisemapping
-          project: documentation
+          project: interne
           logo: wisemapping.svg
           homepage_url: http://10.201.24.250
           description: "Carte interactive (mindmap) des ressources du laboratoire"
