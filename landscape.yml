@@ -14,9 +14,15 @@ landscape:
         - item:
           name: NAS
           project: interne 
-          homepage_url: https://10.201.24.15:5001
           logo: dsm.svg
+          homepage_url: https://10.201.24.15:5001
           description: "Interface de gestion du NAS"
+        - item:
+          name: Wisemapping
+          project: documentation
+          logo: wisemapping.svg
+          homepage_url: http://10.201.24.250
+          description: "Carte interactive (mindmap) des ressources du laboratoire"
 
   - category:
     name: Collaboration et Communication
@@ -27,8 +33,8 @@ landscape:
         - item:
           name: GitLab
           project: interne
-          homepage_url: http://10.201.24.220
           logo: gitlab.svg
+          homepage_url: http://10.201.24.220
           description: "Gestion des dépôts des projets"
         - item:
           name: Taiga
@@ -41,8 +47,8 @@ landscape:
       items:
         - item:
           name: Discord
-          logo: discord.svg
           project: externe
+          logo: discord.svg
           homepage_url: https://discord.gg/CCNAYAfMmV
           description: "Discord officiel du LCSP"
         - item:
