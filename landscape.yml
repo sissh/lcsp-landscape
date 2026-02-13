@@ -17,6 +17,12 @@ landscape:
           logo: dsm.svg
           homepage_url: https://10.201.24.15:5001
           description: "Interface de gestion du NAS"
+        - item:
+          name: Dokploy
+          project: interne
+          logo: dokploy.svg
+          homepage_url: http://10.201.24.254:3000
+          description: "Outil de déploiement d'applications utilisant Docker"
     - subcatogory:
       name: Documentation
       items:
