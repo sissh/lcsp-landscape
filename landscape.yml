@@ -100,3 +100,30 @@ landscape:
           logo: hackropole.svg
           homepage_url: https://hackropole.fr/fr/
           description: "Regroupement des epreuves du France Cybersecurity Challenge, un CTF organisé par l'ANSSI. Idéal pour s'entraîner aux événements CTF."
+    - subcategory:
+      name: Outils
+      items:
+        - item:
+          name: FrenchBreaches
+          project: externe
+          logo: frenchbreaches.svg
+          homepage_url: https://frenchbreaches.com/
+          description: "Outil listant les fuites de données en France."
+        - item:
+          name: Kali Linux
+          project: externe
+          logo: kali.svg
+          homepage_url: https://www.kali.org/
+          description: "Distribution Linux livré avec plusieurs outils de cybersécurité."
+        - item:
+          name: EBIOS Risk Manager - MooC
+          project: externe
+          logo: ebios.svg
+          homepage_url: https://lms.club-ebios.org/
+          description: "Formation gratuite sur la gestion des risques conçu par le Club EBIOS en parteneriat avec l'ANSSI."
+        - item:
+          name: Have I Been Pwned
+          project: externe
+          logo: haveibeenpwned.svg
+          homepage_url: https://haveibeenpwned.com/
+          description: "Outil permettant de trouver si une adresse email ou un son mot de passe figure dans une fuite de donnée."
