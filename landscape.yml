@@ -21,7 +21,7 @@ landscape:
           name: Dokploy
           project: interne
           logo: dokploy.svg
-          homepage_url: http://10.201.24.254:3000
+          homepage_url: http://10.201.24.63:3000
           description: "Outil de déploiement d'applications utilisant Docker"
     - subcatogory:
       name: Documentation
@@ -30,7 +30,7 @@ landscape:
           name: Wisemapping
           project: interne
           logo: wisemapping.svg
-          homepage_url: http://10.201.24.250
+          homepage_url: http://10.201.24.102
           description: "Carte interactive (mindmap) des ressources du laboratoire"
 
   - category:
@@ -43,13 +43,19 @@ landscape:
           name: GitLab
           project: interne
           logo: gitlab.svg
-          homepage_url: http://10.201.24.220
+          homepage_url: http://gitlab.lcsp.intra/
           description: "Gestion des dépôts des projets"
+        - item:
+          name: Teampass
+          project: interne
+          logo: gitlab.svg
+          homepage_url: http://teampass.lcsp.intra/:
+          description: "Gestion des MDP"
         - item:
           name: Taiga
           project: interne
           logo: taiga.svg
-          homepage_url: http://10.201.24.253:9000
+          homepage_url: http://taiga.lcsp.intra:9000/login
           description: "Suivi des projets"
     - subcategory:
       name: Communication
