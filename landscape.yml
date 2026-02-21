@@ -24,7 +24,7 @@ landscape:
                   maturity: interne
                   logo: dokploy.svg
                   homepage_url: http://10.201.24.254:3000
-                  description: Outil de déploiement d’applications utilisant Docker.
+                  description: Outil de deploiement d applications utilisant Docker.
 
         - subcategory:
             name: Documentation
@@ -47,7 +47,7 @@ landscape:
                   maturity: interne
                   logo: gitlab.svg
                   homepage_url: http://10.201.24.220
-                  description: Gestion des dépôts et des projets du laboratoire.
+                  description: Gestion des depots et des projets du laboratoire.
 
               - item:
                   name: Taiga
@@ -74,7 +74,7 @@ landscape:
                   description: Page LinkedIn officielle du LCSP.
 
   - category:
-      name: Ressources d'apprentissage
+      name: Ressources d apprentissage
       subcategories:
         - subcategory:
             name: Cours
@@ -84,14 +84,14 @@ landscape:
                   maturity: externe
                   logo: tryhackme.svg
                   homepage_url: https://tryhackme.com/
-                  description: Plateforme d’apprentissage en cybersécurité proposant des cours interactifs.
+                  description: Plateforme d apprentissage en cybersecurite proposant des cours interactifs.
 
               - item:
                   name: ANSSI
                   maturity: externe
                   logo: anssi.svg
                   homepage_url: https://cyber.gouv.fr/publications
-                  description: Publications officielles de l’ANSSI sur la cybersécurité.
+                  description: Publications officielles de l ANSSI sur la cybersecurite.
 
         - subcategory:
             name: Challenges
@@ -101,14 +101,14 @@ landscape:
                   maturity: externe
                   logo: rootme.svg
                   homepage_url: https://www.root-me.org/?lang=fr
-                  description: Plateforme de challenges pratiques en cybersécurité à difficulté variée.
+                  description: Plateforme de challenges pratiques en cybersecurite a difficulte variee.
 
               - item:
                   name: Hackropole
                   maturity: externe
                   logo: hackropole.svg
                   homepage_url: https://hackropole.fr/fr/
-                  description: Regroupement des épreuves du France Cybersecurity Challenge pour s’entraîner aux CTF.
+                  description: Regroupement des epreuves du France Cybersecurity Challenge pour s entrainer aux CTF.
 
         - subcategory:
             name: Outils
@@ -118,25 +118,25 @@ landscape:
                   maturity: externe
                   logo: frenchbreaches.svg
                   homepage_url: https://frenchbreaches.com/
-                  description: Outil recensant les fuites de données en France.
+                  description: Outil recensant les fuites de donnees en France.
 
               - item:
                   name: Kali Linux
                   maturity: externe
                   logo: kali.svg
                   homepage_url: https://www.kali.org/
-                  description: Distribution Linux livrée avec de nombreux outils de cybersécurité.
+                  description: Distribution Linux livree avec de nombreux outils de cybersecurite.
 
               - item:
                   name: EBIOS Risk Manager - MOOC
                   maturity: externe
                   logo: ebios.svg
                   homepage_url: https://lms.club-ebios.org/
-                  description: Formation gratuite sur la gestion des risques conçue par le Club EBIOS en partenariat avec l’ANSSI.
+                  description: Formation gratuite sur la gestion des risques concue par le Club EBIOS en partenariat avec l ANSSI.
 
               - item:
                   name: Have I Been Pwned
                   maturity: externe
                   logo: haveibeenpwned.svg
                   homepage_url: https://haveibeenpwned.com/
-                  description: Outil permettant de vérifier si une adresse e-mail ou un mot de passe apparaît dans une fuite de données.
+                  description: Outil permettant de verifier si une adresse e-mail ou un mot de passe apparait dans une fuite de donnees.
