@@ -49,7 +49,7 @@ landscape:
           name: Teampass
           project: interne
           logo: gitlab.svg
-          homepage_url: http://teampass.lcsp.intra/:
+          homepage_url: http://teampass.lcsp.intra/
           description: "Gestion des MDP"
         - item:
           name: Taiga
