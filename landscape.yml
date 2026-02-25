@@ -1,116 +1,129 @@
 landscape:
-  - name: Infrastructure
+  - category:
+    name: Infrastructure
     subcategories:
-      - name: Infrastructure locale
-        items:
-          - name: Proxmox
-            maturity: interne
-            logo: proxmox.svg
-            homepage_url: https://10.201.24.5:8006
-            description: Interface de gestion des machines virtuelles.
+    - subcatogory:
+      name: Infrastructure locale
+      items:
+        - item:
+          name: Proxmox
+          project: interne
+          logo: proxmox.svg
+          homepage_url: https://10.201.24.5:8006
+          description: "Interface de gestion des machines virtuelles"
+        - item:
+          name: NAS
+          project: interne 
+          logo: dsm.svg
+          homepage_url: https://10.201.24.15:5001
+          description: "Interface de gestion du NAS"
+        - item:
+          name: Dokploy
+          project: interne
+          logo: dokploy.svg
+          homepage_url: http://10.201.24.254:3000
+          description: "Outil de déploiement d'applications utilisant Docker"
+    - subcatogory:
+      name: Documentation
+      items:
+        - item:
+          name: Wisemapping
+          project: interne
+          logo: wisemapping.svg
+          homepage_url: http://10.201.24.250
+          description: "Carte interactive (mindmap) des ressources du laboratoire"
 
-          - name: NAS
-            maturity: interne
-            logo: dsm.svg
-            homepage_url: https://10.201.24.15:5001
-            description: Interface de gestion du NAS.
-
-          - name: Dokploy
-            maturity: interne
-            logo: dokploy.svg
-            homepage_url: http://10.201.24.254:3000
-            description: Outil de deploiement d applications utilisant Docker.
-
-      - name: Documentation
-        items:
-          - name: Wisemapping
-            maturity: interne
-            logo: wisemapping.svg
-            homepage_url: http://10.201.24.102
-            description: Carte interactive (mindmap) des ressources du laboratoire.
-
-  - name: Collaboration et Communication
+  - category:
+    name: Collaboration et Communication
     subcategories:
-      - name: Collaboration
-        items:
-          - name: GitLab
-            maturity: interne
-            logo: gitlab.svg
-            homepage_url: http://10.201.24.220
-            description: Gestion des depots et des projets du laboratoire.
+    - subcategory:
+      name: Collaboration
+      items:
+        - item:
+          name: GitLab
+          project: interne
+          logo: gitlab.svg
+          homepage_url: http://10.201.24.220
+          description: "Gestion des dépôts des projets"
+        - item:
+          name: Taiga
+          project: interne
+          logo: taiga.svg
+          homepage_url: http://10.201.24.253:9000
+          description: "Suivi des projets"
+    - subcategory:
+      name: Communication
+      items:
+        - item:
+          name: Discord
+          project: externe
+          logo: discord.svg
+          homepage_url: https://discord.gg/CCNAYAfMmV
+          description: "Discord officiel du LCSP"
+        - item:
+          name: LinkedIn
+          project: externe
+          logo: linkedin.svg
+          homepage_url: https://www.linkedin.com/company/laboratoire-cybersecurite-supinfo-paris
+          description: "Page LinkedIn du LCSP"
 
-          - name: Taiga
-            maturity: interne
-            logo: taiga.svg
-            homepage_url: http://10.201.24.103:9000
-            description: Outil de suivi et de gestion de projets.
-
-      - name: Communication
-        items:
-          - name: Discord
-            maturity: externe
-            logo: discord.svg
-            homepage_url: https://discord.gg/CCNAYAfMmV
-            description: Serveur Discord officiel du LCSP.
-
-          - name: LinkedIn
-            maturity: externe
-            logo: linkedin.svg
-            homepage_url: https://www.linkedin.com/company/laboratoire-cybersecurite-supinfo-paris
-            description: Page LinkedIn officielle du LCSP.
-
-  - name: Ressources d'apprentissage
+  - category:
+    name: Ressources d'apprentissage
     subcategories:
-      - name: Cours
-        items:
-          - name: TryHackMe
-            maturity: externe
-            logo: tryhackme.svg
-            homepage_url: https://tryhackme.com/
-            description: Plateforme d apprentissage en cybersecurite proposant des cours interactifs.
-
-          - name: ANSSI
-            maturity: externe
-            logo: anssi.svg
-            homepage_url: https://cyber.gouv.fr/publications
-            description: Publications officielles de l ANSSI sur la cybersecurite.
-
-      - name: Challenges
-        items:
-          - name: Root-Me
-            maturity: externe
-            logo: rootme.svg
-            homepage_url: https://www.root-me.org/?lang=fr
-            description: Plateforme de challenges pratiques en cybersecurite a difficulte variee.
-
-          - name: Hackropole
-            maturity: externe
-            logo: hackropole.svg
-            homepage_url: https://hackropole.fr/fr/
-            description: Regroupement des epreuves du France Cybersecurity Challenge pour s entrainer aux CTF.
-
-      - name: Outils
-        items:
-          - name: FrenchBreaches
-            maturity: externe
-            logo: frenchbreaches.svg
-            homepage_url: https://frenchbreaches.com/
-            description: Outil recensant les fuites de donnees en France.
-
-          - name: Kali Linux
-            maturity: externe
-            logo: kali.svg
-            homepage_url: https://www.kali.org/
-            description: Distribution Linux livree avec de nombreux outils de cybersecurite.
-
-          - name: EBIOS Risk Manager - MOOC
-            maturity: externe
-            logo: ebios.svg
-            homepage_url: https://lms.club-ebios.org/
-            description: Formation gratuite sur la gestion des risques concue par le Club EBIOS en partenariat avec l ANSSI.
-
-          - name: Have I Been Pwned
-            maturity: externe
-            logo: haveibeenpwned.svg
-            homepage_url: https://haveibeenpwned.com/
-            description: Outil permettant de verifier si une adresse e-mail ou un mot de passe apparait dans une fuite de donnees.
+    - subcategory:
+      name: Cours
+      items:
+        - item:
+          name: TryHackMe
+          project: externe
+          logo: tryhackme.svg
+          homepage_url: https://tryhackme.com/
+          description: "Plateforme d'apprentissage en cybersécurité. Contient des cours interactifs."
+        - item:
+          name: ANSSI
+          project: externe
+          logo: anssi.svg
+          homepage_url: https://cyber.gouv.fr/publications
+          description: "Publications de l'ANSSI, l'Agence Nationale de la Sécurité des Systèmes d'Information."
+    - subcategory:
+      name: Challenges
+      items:
+        - item:
+          name: Root-Me
+          project: externe
+          logo: rootme.svg
+          homepage_url: https://www.root-me.org/?lang=fr
+          description: "Plateforme d'apprentissage pratique en cybersécurité. Contient plusieurs types de challenges à difficulté varié."
+        - item:
+          name: Hackropole
+          project: externe
+          logo: hackropole.svg
+          homepage_url: https://hackropole.fr/fr/
+          description: "Regroupement des epreuves du France Cybersecurity Challenge, un CTF organisé par l'ANSSI. Idéal pour s'entraîner aux événements CTF."
+    - subcategory:
+      name: Outils
+      items:
+        - item:
+          name: FrenchBreaches
+          project: externe
+          logo: frenchbreaches.svg
+          homepage_url: https://frenchbreaches.com/
+          description: "Outil listant les fuites de données en France."
+        - item:
+          name: Kali Linux
+          project: externe
+          logo: kali.svg
+          homepage_url: https://www.kali.org/
+          description: "Distribution Linux livré avec plusieurs outils de cybersécurité."
+        - item:
+          name: EBIOS Risk Manager - MooC
+          project: externe
+          logo: ebios.svg
+          homepage_url: https://lms.club-ebios.org/
+          description: "Formation gratuite sur la gestion des risques conçu par le Club EBIOS en parteneriat avec l'ANSSI."
+        - item:
+          name: Have I Been Pwned
+          project: externe
+          logo: haveibeenpwned.svg
+          homepage_url: https://haveibeenpwned.com/
+          description: "Outil permettant de trouver si une adresse email ou un son mot de passe figure dans une fuite de donnée."
