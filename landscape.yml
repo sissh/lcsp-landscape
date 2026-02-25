@@ -48,7 +48,7 @@ landscape:
         - item:
           name: Teampass
           project: interne
-          logo: gitlab.svg
+          logo: teampass.svg
           homepage_url: http://teampass.lcsp.intra/
           description: "Gestion des MDP"
         - item:
