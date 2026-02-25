@@ -5,6 +5,7 @@
 # Reference documentation: https://github.com/cncf/landscape2/blob/main/docs/config/settings.yml
 
 foundation: LCSP
+#url: http://10.201.24.105:8000
 
 url: http://127.0.0.1:8000
 
@@ -17,11 +18,10 @@ colors:
   color6: "rgba(28, 97, 140, 1)"
   color7: "rgba(180, 219, 255, 1)"
 
-description: Landscape pour le Laboratoire de Cybersécurité de Supinfo Paris
+description: Landscape du Laboratoire de Cybersécurité de Supinfo Paris
 
 images:
-  favicon: "https://raw.githubusercontent.com/sissh/lcsp-landscape/refs/heads/master/hosted_logos/favicon.ico"
-
+  favicon: "hosted_logos/favicon.ico"
 featured_items:
   - field: maturity
     options:
