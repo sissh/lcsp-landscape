@@ -1,9 +1,15 @@
 build-job:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "master"
   stage: build
   script:
     - landscape2 build --data-file $CI_PROJECT_DIR/landscape.yml --settings-file $CI_PROJECT_DIR/settings.yml --logos-path $CI_PROJECT_DIR/hosted_logos --output-dir /home/$USER/output_landscape
 
 deploy-prod:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "master"
   stage: deploy
   script:
     - cp -fr /home/$USER/output_landscape/* /var/www/html
