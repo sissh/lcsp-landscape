@@ -30,7 +30,7 @@ landscape:
           name: Wisemapping
           project: interne
           logo: wisemapping.svg
-          homepage_url: http://10.201.24.102
+          homepage_url: http://wise-mapping.lcsp.intra/
           description: "Carte interactive (mindmap) des ressources du laboratoire"
 
   - category:
