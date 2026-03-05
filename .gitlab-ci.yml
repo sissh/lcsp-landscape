@@ -11,7 +11,8 @@ gitleaks:
   variables:
     GIT_DEPTH: 0
   script:
-    - gitleaks detect --source . --redact --no-banner \
+    - gitleaks version
+    - gitleaks detect --source $CI_PROJECT_DIR --redact --no-banner \
       --report-format json --report-path gitleaks-report.json --exit-code 1
   after_script:
     - test -f gitleaks-report.json || echo '{}' > gitleaks-report.json
