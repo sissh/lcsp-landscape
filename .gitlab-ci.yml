@@ -5,22 +5,18 @@ stages:
 
 gitleaks:
   stage: scan
-  image:
-    name: zricethezav/gitleaks:latest
-    entrypoint: [""]
   variables:
     GIT_DEPTH: 0
   script:
     - gitleaks version
     - gitleaks detect --source $CI_PROJECT_DIR --redact --no-banner \
-      --report-format json --report-path gitleaks-report.json --exit-code 1
+      --report-format json --report-path gitleaks-report.json
   after_script:
     - test -f gitleaks-report.json || echo '{}' > gitleaks-report.json
   artifacts:
     when: always
     paths:
       - gitleaks-report.json
-
 
 build-job:
   rules:
