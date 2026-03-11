@@ -7,13 +7,19 @@ landscape:
       items:
         - item:
           name: Proxmox
-          project: Proxmox
+          project: interne
           logo: proxmox.svg
           homepage_url: https://10.201.24.5:8006
           description: "Interface de gestion des machines virtuelles"
         - item:
+          name: NAS
+          project: interne 
+          logo: dsm.svg
+          homepage_url: https://10.201.24.15:5001
+          description: "Interface de gestion du NAS"
+        - item:
           name: Dokploy
-          project: Dokploy
+          project: interne
           logo: dokploy.svg
           homepage_url: http://10.201.24.63:3000
           description: "Outil de déploiement d'applications utilisant Docker"
@@ -22,7 +28,7 @@ landscape:
       items:
         - item:
           name: Wisemapping
-          project: Wisemapping
+          project: interne
           logo: wisemapping.svg
           homepage_url: http://wise-mapping.lcsp.intra/
           description: "Carte interactive (mindmap) des ressources du laboratoire"
@@ -35,19 +41,19 @@ landscape:
       items:
         - item:
           name: GitLab
-          project: GitLab
+          project: interne
           logo: gitlab.svg
           homepage_url: http://gitlab.lcsp.intra/
           description: "Gestion des dépôts des projets"
         - item:
           name: Teampass
-          project: Teampass
+          project: interne
           logo: teampass.svg
           homepage_url: http://teampass.lcsp.intra/
           description: "Gestion des MDP"
         - item:
           name: Taiga
-          project: Taiga
+          project: interne
           logo: taiga.svg
           homepage_url: http://taiga.lcsp.intra:9000/login
           description: "Suivi des projets"
@@ -56,13 +62,13 @@ landscape:
       items:
         - item:
           name: Discord
-          project: Discord
+          project: externe
           logo: discord.svg
           homepage_url: https://discord.gg/CCNAYAfMmV
           description: "Discord officiel du LCSP"
         - item:
           name: LinkedIn
-          project: LinkedIn
+          project: externe
           logo: linkedin.svg
           homepage_url: https://www.linkedin.com/company/laboratoire-cybersecurite-supinfo-paris
           description: "Page LinkedIn du LCSP"
@@ -75,13 +81,13 @@ landscape:
       items:
         - item:
           name: TryHackMe
-          project: TryHackMe
+          project: externe
           logo: tryhackme.svg
           homepage_url: https://tryhackme.com/
           description: "Plateforme d'apprentissage en cybersécurité. Contient des cours interactifs."
         - item:
           name: ANSSI
-          project: ANSSI
+          project: externe
           logo: anssi.svg
           homepage_url: https://cyber.gouv.fr/publications
           description: "Publications de l'ANSSI, l'Agence Nationale de la Sécurité des Systèmes d'Information."
@@ -90,13 +96,13 @@ landscape:
       items:
         - item:
           name: Root-Me
-          project: Root-Me
+          project: externe
           logo: rootme.svg
           homepage_url: https://www.root-me.org/?lang=fr
           description: "Plateforme d'apprentissage pratique en cybersécurité. Contient plusieurs types de challenges à difficulté varié."
         - item:
           name: Hackropole
-          project: Hackropole
+          project: externe
           logo: hackropole.svg
           homepage_url: https://hackropole.fr/fr/
           description: "Regroupement des epreuves du France Cybersecurity Challenge, un CTF organisé par l'ANSSI. Idéal pour s'entraîner aux événements CTF."
@@ -105,25 +111,25 @@ landscape:
       items:
         - item:
           name: FrenchBreaches
-          project: FrenchBreaches
+          project: externe
           logo: frenchbreaches.svg
           homepage_url: https://frenchbreaches.com/
           description: "Outil listant les fuites de données en France."
         - item:
           name: Kali Linux
-          project: Kali Linux
+          project: externe
           logo: kali.svg
           homepage_url: https://www.kali.org/
           description: "Distribution Linux livré avec plusieurs outils de cybersécurité."
         - item:
           name: EBIOS Risk Manager - MooC
-          project: EBIOS MooC
+          project: externe
           logo: ebios.svg
           homepage_url: https://lms.club-ebios.org/
           description: "Formation gratuite sur la gestion des risques conçu par le Club EBIOS en parteneriat avec l'ANSSI."
         - item:
           name: Have I Been Pwned
-          project: Have I Been Pwned
+          project: externe
           logo: haveibeenpwned.svg
           homepage_url: https://haveibeenpwned.com/
           description: "Outil permettant de trouver si une adresse email ou un son mot de passe figure dans une fuite de donnée."
