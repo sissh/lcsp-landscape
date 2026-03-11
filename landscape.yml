@@ -12,12 +12,6 @@ landscape:
           homepage_url: https://10.201.24.5:8006
           description: "Interface de gestion des machines virtuelles"
         - item:
-          name: NAS
-          project: interne 
-          logo: dsm.svg
-          homepage_url: https://10.201.24.15:5001
-          description: "Interface de gestion du NAS"
-        - item:
           name: Dokploy
           project: interne
           logo: dokploy.svg
