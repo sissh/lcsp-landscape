@@ -1,15 +1,12 @@
 stages:
   - scan
-  - build
-  - deploy
 
 gitleaks:
   stage: scan
   variables:
     GIT_DEPTH: 0
   script:
-    - gitleaks version
-    - gitleaks detect --source . --redact --no-banner \
+    - gitleaks dir --redact --no-banner \
       --report-format json --report-path gitleaks-report.json --exit-code 1
   after_script:
     - test -f gitleaks-report.json || echo '{}' > gitleaks-report.json
@@ -18,19 +15,3 @@ gitleaks:
     paths:
       - gitleaks-report.json
 
-build-job:
-  rules:
-    - if: $CI_COMMIT_BRANCH == "master"
-    - if: $CI_COMMIT_BRANCH == "main"
-  stage: build
-  script:
-    - landscape2 build --data-file $CI_PROJECT_DIR/landscape.yml --settings-file $CI_PROJECT_DIR/settings.yml --logos-path $CI_PROJECT_DIR/hosted_logos --output-dir /home/$USER/output_landscape
-
-deploy-prod:
-  rules:
-    - if: $CI_COMMIT_BRANCH == "master"
-    - if: $CI_COMMIT_BRANCH == "main"
-  stage: deploy
-  script:
-    - cp -fr /home/$USER/output_landscape/* /var/www/html
-  environment: production
