@@ -3,6 +3,8 @@ stages:
 
 gitleaks:
   stage: scan
+  tags:
+    - cicd-scan
   variables:
     GIT_DEPTH: 0
   script:
