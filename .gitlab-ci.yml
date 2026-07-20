@@ -1,16 +1,101 @@
-build-job:
+stages:
+  - configure
+  - build
+  - deploy
+
+variables:
+  ZABBIX_SERVER: "192.168.60.10"
+  ZABBIX_METADATA: "linux gitlab-runner"
+
+configure-zabbix-agent:
+  stage: configure
+
+  # Mets ici le tag réel associé à RUNNER-WEB.
+  # Supprime cette partie si ton runner accepte les jobs sans tag.
+  tags:
+    - runner-web
+
   rules:
-    - if: $CI_COMMIT_BRANCH == "master"
-    - if: $CI_COMMIT_BRANCH == "main"
-  stage: build
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      when: manual
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: manual
+
   script:
-    - landscape2 build --data-file $CI_PROJECT_DIR/landscape.yml --settings-file $CI_PROJECT_DIR/settings.yml --logos-path $CI_PROJECT_DIR/hosted_logos --output-dir /home/$USER/output_landscape
+    - |
+      set -e
+
+      echo "Configuration de Zabbix Agent 2 sur $(hostname)"
+
+      if ! command -v zabbix_agent2 >/dev/null 2>&1; then
+        sudo apt-get update
+        sudo DEBIAN_FRONTEND=noninteractive apt-get install -y zabbix-agent2
+      fi
+
+      sudo mkdir -p /etc/zabbix
+
+      sudo tee /etc/zabbix/zabbix_agent2.conf >/dev/null <<EOF
+      PidFile=/run/zabbix/zabbix_agent2.pid
+      LogFile=/var/log/zabbix/zabbix_agent2.log
+      LogFileSize=0
+
+      Server=${ZABBIX_SERVER}
+      ServerActive=${ZABBIX_SERVER}
+
+      ListenPort=10050
+      HostnameItem=system.hostname
+      HostMetadata=${ZABBIX_METADATA}
+      ForceActiveChecksOnStart=1
+
+      PluginSocket=/run/zabbix/agent.plugin.sock
+      ControlSocket=/run/zabbix/agent.sock
+
+      Include=/etc/zabbix/zabbix_agent2.d/plugins.d/*.conf
+      Include=/etc/zabbix/zabbix_agent2.d/*.conf
+      EOF
+
+      sudo chown root:zabbix /etc/zabbix/zabbix_agent2.conf
+      sudo chmod 640 /etc/zabbix/zabbix_agent2.conf
+
+      echo "Validation de la configuration"
+      sudo zabbix_agent2 -T -c /etc/zabbix/zabbix_agent2.conf
+
+      echo "Activation de l'agent"
+      sudo systemctl enable zabbix-agent2
+      sudo systemctl restart zabbix-agent2
+      sudo systemctl is-active --quiet zabbix-agent2
+
+      echo "Hostname communiqué à Zabbix :"
+      sudo zabbix_agent2 \
+        -t system.hostname \
+        -c /etc/zabbix/zabbix_agent2.conf
+
+      echo "Zabbix Agent 2 actif sur $(hostname)"
+
+build-job:
+  stage: build
+
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+  script:
+    - >
+      landscape2 build
+      --data-file "$CI_PROJECT_DIR/landscape.yml"
+      --settings-file "$CI_PROJECT_DIR/settings.yml"
+      --logos-path "$CI_PROJECT_DIR/hosted_logos"
+      --output-dir "/home/$USER/output_landscape"
 
 deploy-prod:
-  rules:
-    - if: $CI_COMMIT_BRANCH == "master"
-    - if: $CI_COMMIT_BRANCH == "main"
   stage: deploy
+
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
   script:
-    - cp -fr /home/$USER/output_landscape/* /var/www/html
-  environment: production
+    - cp -fr "/home/$USER/output_landscape/." /var/www/html/
+
+  environment:
+    name: production
