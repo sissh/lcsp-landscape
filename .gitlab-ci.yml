@@ -10,11 +10,10 @@ variables:
 
 default:
   before_script:
-    # Debian n'ajoute pas forcément /usr/sbin au PATH de gitlab-runner.
-    - export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-    - echo "Utilisateur du job : $(whoami)"
-    - echo "Machine : $(hostname)"
-    - echo "PATH=${PATH}"
+    - 'export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"'
+    - 'echo "Utilisateur du job : $(whoami)"'
+    - 'echo "Machine : $(hostname)"'
+    - 'echo "PATH=${PATH}"'
 
 configure-zabbix-agent:
   stage: configure
@@ -32,7 +31,6 @@ configure-zabbix-agent:
 
       echo "Configuration de Zabbix Agent 2 sur $(hostname)"
 
-      echo "Vérification de sudo"
       command -v sudo
       sudo -n true
 
@@ -40,21 +38,16 @@ configure-zabbix-agent:
         echo "Installation de Zabbix Agent 2"
 
         sudo -n apt-get update
-
         sudo -n env DEBIAN_FRONTEND=noninteractive \
           apt-get install -y zabbix-agent2
       else
         echo "Zabbix Agent 2 est déjà installé : $(command -v zabbix_agent2)"
       fi
 
-      echo "Création des répertoires Zabbix"
-
       sudo -n mkdir -p \
         /etc/zabbix \
         /etc/zabbix/zabbix_agent2.d \
         /etc/zabbix/zabbix_agent2.d/plugins.d
-
-      echo "Écriture de la configuration"
 
       sudo -n tee /etc/zabbix/zabbix_agent2.conf >/dev/null <<EOF
       PidFile=/run/zabbix/zabbix_agent2.pid
@@ -79,15 +72,13 @@ configure-zabbix-agent:
       sudo -n chown root:zabbix /etc/zabbix/zabbix_agent2.conf
       sudo -n chmod 640 /etc/zabbix/zabbix_agent2.conf
 
-      echo "Emplacement de l'agent : $(command -v zabbix_agent2)"
-
       echo "Validation de la configuration"
 
       sudo -n "$(command -v zabbix_agent2)" \
         -T \
         -c /etc/zabbix/zabbix_agent2.conf
 
-      echo "Activation et redémarrage de l'agent"
+      echo "Activation de l'agent"
 
       sudo -n systemctl enable zabbix-agent2
       sudo -n systemctl restart zabbix-agent2
@@ -98,8 +89,6 @@ configure-zabbix-agent:
       sudo -n "$(command -v zabbix_agent2)" \
         -t system.hostname \
         -c /etc/zabbix/zabbix_agent2.conf
-
-      echo "État du service :"
 
       sudo -n systemctl status zabbix-agent2 \
         --no-pager \
@@ -119,14 +108,10 @@ build-job:
     - |
       set -euo pipefail
 
-      echo "Vérification de landscape2"
       command -v landscape2
 
-      echo "Nettoyage du précédent résultat"
       rm -rf "${OUTPUT_LANDSCAPE}"
       mkdir -p "${OUTPUT_LANDSCAPE}"
-
-      echo "Construction du Landscape"
 
       landscape2 build \
         --data-file "${CI_PROJECT_DIR}/landscape.yml" \
@@ -154,8 +139,6 @@ deploy-prod:
         echo "ERREUR : le répertoire ${OUTPUT_LANDSCAPE} n'existe pas."
         exit 1
       fi
-
-      echo "Déploiement vers /var/www/html"
 
       sudo -n mkdir -p /var/www/html
       sudo -n cp -a "${OUTPUT_LANDSCAPE}/." /var/www/html/
