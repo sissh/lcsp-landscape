@@ -12,8 +12,8 @@ configure-zabbix-agent:
 
   # Mets ici le tag réel associé à RUNNER-WEB.
   # Supprime cette partie si ton runner accepte les jobs sans tag.
-  tags:
-    - runner-web
+  #tags:
+  #  - runner-web
 
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
