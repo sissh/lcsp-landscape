@@ -1,12 +1,45 @@
+include:
+  - component: gitlab.lcsp.intra/infra/runner-manager/provision@1.1.4
+    inputs:
+      executor: shell
+      install_docker: "false"
+      provisioner_image: registry.lcsp.intra/infra/runner-manager/provisioner:1.1.4
+      ct_bridge: vmbr2
+      ct_cpu: "1"
+      ct_ram: "2048"
+      ct_disk: "10"
+      ct_storage: ceph-vm-infra
+      ct_ip: "192.168.20.104/24"
+      ct_gw: "192.168.20.1"
+
+stages:
+  - provision
+  - build-job
+  - deploy-prod
+
 build-job:
+  needs: ["provision-runner"]
+  # Ces deux tags sont les seuls garantis par runner-manager, qui enregistre le
+  # runner avec "<CI_PROJECT_PATH_SLUG>,proxmox,deploy" — ici
+  tags:
+    - proxmox
+    - deploy
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
     - if: $CI_COMMIT_BRANCH == "main"
   stage: build
   script:
+    - curl --proto '=https' --tlsv1.2 -LsSf https://github.com/cncf/landscape2/releases/download/v1.1.0/landscape2-installer.sh | sh
+    - source $HOME/.cargo/env
     - landscape2 build --data-file $CI_PROJECT_DIR/landscape.yml --settings-file $CI_PROJECT_DIR/settings.yml --logos-path $CI_PROJECT_DIR/hosted_logos --output-dir /home/$USER/output_landscape
-
+    - apt-get install apache2 -y
 deploy-prod:
+  needs: ["build-job","provision-runner"]
+  # Ces deux tags sont les seuls garantis par runner-manager, qui enregistre le
+  # runner avec "<CI_PROJECT_PATH_SLUG>,proxmox,deploy" — ici
+  tags:
+    - proxmox
+    - deploy
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
     - if: $CI_COMMIT_BRANCH == "main"
