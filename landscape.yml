@@ -9,7 +9,7 @@ landscape:
           name: Proxmox
           project: interne
           logo: proxmox.svg
-          homepage_url: https://192.168.10.5:8006
+          homepage_url: https://192.168.20.104:8006
           description: "Interface de gestion des machines virtuelles"
     - subcatogory:
       name: Documentation
@@ -39,12 +39,6 @@ landscape:
           logo: teampass.svg
           homepage_url: http://teampass.lcsp.intra/
           description: "Gestion des MDP"
-        - item:
-          name: Taiga
-          project: interne
-          logo: taiga.svg
-          homepage_url: http://taiga.lcsp.intra:9000/login
-          description: "Suivi des projets"
     - subcategory:
       name: Communication
       items:
