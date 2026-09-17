@@ -27,7 +27,7 @@ build-job:
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
     - if: $CI_COMMIT_BRANCH == "main"
-  stage: build
+  stage: build-job
   script:
     - curl --proto '=https' --tlsv1.2 -LsSf https://github.com/cncf/landscape2/releases/download/v1.1.0/landscape2-installer.sh | sh
     - source $HOME/.cargo/env
@@ -43,7 +43,7 @@ deploy-prod:
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
     - if: $CI_COMMIT_BRANCH == "main"
-  stage: deploy
+  stage: deploy-prod
   script:
     - cp -fr /home/$USER/output_landscape/* /var/www/html
   environment: production
