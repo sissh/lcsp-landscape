@@ -9,14 +9,8 @@ landscape:
           name: Proxmox
           project: interne
           logo: proxmox.svg
-          homepage_url: https://10.201.24.5:8006
+          homepage_url: https://192.168.10.5:8006
           description: "Interface de gestion des machines virtuelles"
-        - item:
-          name: Dokploy
-          project: interne
-          logo: dokploy.svg
-          homepage_url: http://10.201.24.63:3000
-          description: "Outil de déploiement d'applications utilisant Docker"
     - subcatogory:
       name: Documentation
       items:
