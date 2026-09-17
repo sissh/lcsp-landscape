@@ -14,8 +14,8 @@ include:
 
 stages:
   - provision
-  - build-job
-  - deploy-prod
+  - build
+  - deploy
 
 build-job:
   needs: ["provision-runner"]
