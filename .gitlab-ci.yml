@@ -1,9 +1,9 @@
 include:
-  - component: gitlab.lcsp.intra/infra/runner-manager/provision@1.1.4
+  - component: gitlab.lcsp.intra/infra/runner-manager/provision@1.2.0
     inputs:
       executor: shell
       install_docker: "false"
-      provisioner_image: registry.lcsp.intra/infra/runner-manager/provisioner:1.1.4
+      provisioner_image: registry.lcsp.intra/infra/runner-manager/provisioner:1.2.0
       ct_bridge: vmbr2
       ct_cpu: "1"
       ct_ram: "2048"
@@ -11,13 +11,19 @@ include:
       ct_storage: ceph-vm-infra
       ct_ip: "192.168.20.104/24"
       ct_gw: "192.168.20.1"
+      # Apache est installé PAR LE PROVISIONNEMENT, pas par un job : les jobs
+      # tournent sous "gitlab-runner", qui n'a pas sudo — un apt-get y échoue sur
+      # le verrou dpkg. Même raison pour la racine web, que deploy-prod doit
+      # pouvoir écrire.
+      ct_packages: "apache2"
+      ct_owned_paths: "/var/www/html"
 
 stages:
   - provision
   - build-job
   - deploy-prod
 
-build-job:
+.landscape-runner:
   needs: ["provision-runner"]
   # Ces deux tags sont les seuls garantis par runner-manager, qui enregistre le
   # runner avec "<CI_PROJECT_PATH_SLUG>,proxmox,deploy" — ici
@@ -27,23 +33,25 @@ build-job:
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
     - if: $CI_COMMIT_BRANCH == "main"
+
+build-job:
+  extends: .landscape-runner
   stage: build-job
   script:
     - curl --proto '=https' --tlsv1.2 -LsSf https://github.com/cncf/landscape2/releases/download/v1.1.0/landscape2-installer.sh | sh
     - source $HOME/.cargo/env
-    - landscape2 build --data-file $CI_PROJECT_DIR/landscape.yml --settings-file $CI_PROJECT_DIR/settings.yml --logos-path $CI_PROJECT_DIR/hosted_logos --output-dir /home/$USER/output_landscape
-    - apt-get install apache2 -y
+    - landscape2 build --data-file $CI_PROJECT_DIR/landscape.yml --settings-file $CI_PROJECT_DIR/settings.yml --logos-path $CI_PROJECT_DIR/hosted_logos --output-dir $CI_PROJECT_DIR/output_landscape
+  # Le site passe par les artifacts plutôt que par un chemin partagé sous $HOME :
+  # deploy-prod ne dépend donc pas du répertoire de travail laissé par build-job.
+  artifacts:
+    paths:
+      - output_landscape/
+    expire_in: 1 day
+
 deploy-prod:
-  needs: ["build-job","provision-runner"]
-  # Ces deux tags sont les seuls garantis par runner-manager, qui enregistre le
-  # runner avec "<CI_PROJECT_PATH_SLUG>,proxmox,deploy" — ici
-  tags:
-    - proxmox
-    - deploy
-  rules:
-    - if: $CI_COMMIT_BRANCH == "master"
-    - if: $CI_COMMIT_BRANCH == "main"
+  extends: .landscape-runner
+  needs: ["provision-runner", "build-job"]
   stage: deploy-prod
   script:
-    - cp -fr /home/$USER/output_landscape/* /var/www/html
+    - cp -fr output_landscape/. /var/www/html/
   environment: production
