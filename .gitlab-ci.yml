@@ -25,9 +25,12 @@ build-job:
     - proxmox
     - deploy
   rules:
-    - if: $CI_COMMIT_BRANCH == "master"
-    - if: $CI_COMMIT_BRANCH == "main"
-  stage: build
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      when: manual
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: manual
+    - when: never
+
   script:
     - curl --proto '=https' --tlsv1.2 -LsSf https://github.com/cncf/landscape2/releases/download/v1.1.0/landscape2-installer.sh | sh
     - source $HOME/.cargo/env
@@ -44,6 +47,27 @@ deploy-prod:
     - if: $CI_COMMIT_BRANCH == "master"
     - if: $CI_COMMIT_BRANCH == "main"
   stage: deploy
+
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - when: never
+
   script:
-    - cp -fr /home/$USER/output_landscape/* /var/www/html
-  environment: production
+    - |
+      set -euo pipefail
+
+      sudo -n true
+
+      if [ ! -d "${OUTPUT_LANDSCAPE}" ]; then
+        echo "ERREUR : le répertoire ${OUTPUT_LANDSCAPE} n'existe pas."
+        exit 1
+      fi
+
+      sudo -n mkdir -p /var/www/html
+      sudo -n cp -a "${OUTPUT_LANDSCAPE}/." /var/www/html/
+
+      echo "Déploiement terminé"
+
+  environment:
+    name: production
