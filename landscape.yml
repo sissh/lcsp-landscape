@@ -1,17 +1,35 @@
 landscape:
   - category:
-    name: Infrastructure
+    name: Administration
     subcategories:
-    - subcatogory:
-      name: Infrastructure locale
+    - subcategory:
+      name: Outils infrastructure
       items:
         - item:
           name: Proxmox
           project: interne
           logo: proxmox.svg
-          homepage_url: https://192.168.20.104:8006
-          description: "Interface de gestion des machines virtuelles"
-    - subcatogory:
+          homepage_url: https://gazanie.lcsp.intra:8006
+          description: "Gazanie (noeud) - une des interface de gestion des machines virtuelles"
+        - item:
+          name: Zabbix
+          project: interne
+          logo: zabbix.svg
+          homepage_url: http://zabbix-server.lcsp.intra:8080/
+          description: "Dashboard pour la supervision des métriques globales du laboratoire (performance)"
+        - item:
+          name: Pegaprox
+          project: interne
+          logo: pegaprox.svg
+          homepage_url: https://pegaprox.lcsp.intra:5000/
+          description: "Interface gestion globale du cluster"
+        - item:
+          name: Wazuh
+          project: interne
+          logo: wazuh.svg
+          homepage_url: https://wazuh.lcsp.intra/
+          description: "Dashboard pour la supervision de la sécurité du laboratoire (alertes)"
+    - subcategory:
       name: Documentation
       items:
         - item:
@@ -20,6 +38,12 @@ landscape:
           logo: wisemapping.svg
           homepage_url: http://wise-mapping.lcsp.intra/
           description: "Carte interactive (mindmap) des ressources du laboratoire"
+        - item:
+          name: Taiga
+          project: interne
+          logo: taiga.svg
+          homepage_url: http://taiga.lcsp.intra:9000/
+          description: "Plateforme de gestion de projets agiles"
 
   - category:
     name: Collaboration et Communication
