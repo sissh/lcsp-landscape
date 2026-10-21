@@ -18,12 +18,6 @@ landscape:
           homepage_url: http://zabbix-server.lcsp.intra:8080/
           description: "Dashboard pour la supervision des métriques globales du laboratoire (performance)"
         - item:
-          name: Pegaprox
-          project: interne
-          logo: pegaprox.svg
-          homepage_url: https://pegaprox.lcsp.intra:5000/
-          description: "Interface gestion globale du cluster"
-        - item:
           name: Wazuh
           project: interne
           logo: wazuh.svg
