@@ -50,7 +50,7 @@ configure-zabbix-agent:
 
       : "${ZABBIX_SERVER:?Variable ZABBIX_SERVER manquante}"
       : "${ZABBIX_METADATA:?Variable ZABBIX_METADATA manquante}"
-      true
+      sudo -n true
 
       echo "Vérification de Zabbix Agent 2 sur $(hostname)"
 
@@ -72,16 +72,16 @@ configure-zabbix-agent:
         wget -qO "$workdir/zabbix-release.deb" \
           'https://repo.zabbix.com/zabbix/7.4/release/debian/pool/main/z/zabbix-release/zabbix-release_latest_7.4+debian12_all.deb'
 
-        dpkg -i "$workdir/zabbix-release.deb"
-        apt-get update
-        env DEBIAN_FRONTEND=noninteractive \
+        sudo -n dpkg -i "$workdir/zabbix-release.deb"
+        sudo -n apt-get update
+        sudo -n env DEBIAN_FRONTEND=noninteractive \
           apt-get install -y zabbix-agent2
       else
         echo "Paquet zabbix-agent2 déjà installé"
       fi
 
       # 2. Préparation de la configuration
-      mkdir -p /etc/zabbix/zabbix_agent2.d/plugins.d
+      sudo -n mkdir -p /etc/zabbix/zabbix_agent2.d/plugins.d
 
       cat > "$workdir/zabbix_agent2.conf" <<EOF
       PidFile=/run/zabbix/zabbix_agent2.pid
@@ -105,33 +105,33 @@ configure-zabbix-agent:
 
       # 3. Validation avant application
       echo "Validation de la configuration"
-      /usr/sbin/zabbix_agent2 -T \
+      sudo -n /usr/sbin/zabbix_agent2 -T \
         -c "$workdir/zabbix_agent2.conf"
 
       # 4. Application uniquement en cas de modification
-      if cmp -s \
+      if sudo -n cmp -s \
           "$workdir/zabbix_agent2.conf" \
           /etc/zabbix/zabbix_agent2.conf; then
 
         echo "Configuration inchangée"
-        systemctl enable --now zabbix-agent2
+        sudo -n systemctl enable --now zabbix-agent2
       else
         echo "Application de la configuration"
 
-        install -o root -g zabbix -m 0640 \
+        sudo -n install -o root -g zabbix -m 0640 \
           "$workdir/zabbix_agent2.conf" \
           /etc/zabbix/zabbix_agent2.conf
 
-        systemctl enable zabbix-agent2
-        systemctl restart zabbix-agent2
+        sudo -n systemctl enable zabbix-agent2
+        sudo -n systemctl restart zabbix-agent2
       fi
 
       # 5. Vérifications finales
       echo "Vérification du service"
-      systemctl is-active --quiet zabbix-agent2
+      sudo -n systemctl is-active --quiet zabbix-agent2
 
       echo "Test de collecte locale"
-      /usr/sbin/zabbix_agent2 \
+      sudo -n /usr/sbin/zabbix_agent2 \
         -t system.hostname \
         -c /etc/zabbix/zabbix_agent2.conf
 
