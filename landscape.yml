@@ -38,12 +38,6 @@ landscape:
           logo: wisemapping.svg
           homepage_url: http://wise-mapping.lcsp.intra/
           description: "Carte interactive (mindmap) des ressources du laboratoire"
-        - item:
-          name: Taiga
-          project: interne
-          logo: taiga.svg
-          homepage_url: http://taiga.lcsp.intra:9000/
-          description: "Plateforme de gestion de projets agiles"
 
   - category:
     name: Collaboration et Communication
